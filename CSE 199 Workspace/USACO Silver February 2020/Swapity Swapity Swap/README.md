@@ -3,7 +3,7 @@
   - Cycles.
     - Never end up traversing a cycle more than once in your algorithm.
   - Think of it in terms of a graph..., but don't actually implement it in terms of a graph.
-  - Avoid repeating the same calculation over and over again -- use a smaller solution to solver a bigger solution. I think this counts as dynamic programming, because even though you don't use memoization, you still calculate subproblems to solve bigger problems.
+  - Avoid repeating the same calculation over and over again -- use a smaller solution to solver a bigger solution. I think this counts as dynamic programming, because even though you use a small amount of memoization, you still calculate subproblems to solve bigger problems.
   - Visited/isComputed array.
 
 ### Explanation
@@ -13,3 +13,5 @@ N and K are massive, which means the time complexity limit is probably very stri
 3. You can further reduce computations by marking each index as visited/isComputed. This is because once you touch an index, then we know a cycle would eventually be computed for it. It would save a ton of time to not repeat a cycle a bunch of times.
 4. One big way to reduce the number of full cycle traversals is to check the length of the cycle your starting cow is in, and mod K by it. This pretty much eliminates the need to traverse the cycle more than once; however, there's actually a way to optimize this even further.
     - While you're computing the cycles in the first place, use an array to store the cows that appear in this cycle. Once the cycle has been fully completed, traverse it one more time and calculate the solution location of each cow directly by using the mod strategy from #4, which will reduce the number of traverals of the cycle all the way down to only 2.
+
+Note: what makes this question so difficult is that if you miss any of these steps, you will always get a timeout on some of the test cases.
