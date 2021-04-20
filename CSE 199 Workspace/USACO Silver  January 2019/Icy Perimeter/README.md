@@ -16,5 +16,5 @@ The implementation of this problem isn't significant. This problem, however, pre
         - We hit a dot.
 - Calculating the area of each blob:
     - Increment the area every time we run into a # symbol.
-        - Note that the only time we should be marking a location as visited is if we reach a # symbol. This is because the recursion algorithm should stop branching out if it sees dots.
+        - Note that the only time we should be marking a location as visited is if we reach a # symbol. This is because the recursion algorithm should stop branching out if it sees dots.  
 [Here](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Ice_Perimeter.jpg) is an image of what I wrote on my scratch paper.
