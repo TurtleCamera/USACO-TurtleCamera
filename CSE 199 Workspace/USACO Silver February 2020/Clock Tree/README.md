@@ -7,13 +7,13 @@
 
 ### Explanation
 ###### What I learned from the problem
-    - There are N rooms that are connected with N - 1 corridors. This basically screams minimum spanning tree.  
-    - Each room has a clock such that the handle points to one of the 12 hours.
-    - Bessie wants to change all the clocks to point to 12, but she can only do so by moving each clock handle one at a time. The only way she can move a handle is by walking into a room.
+  - There are N rooms that are connected with N - 1 corridors. This basically screams minimum spanning tree.  
+  - Each room has a clock such that the handle points to one of the 12 hours.
+  - Bessie wants to change all the clocks to point to 12, but she can only do so by moving each clock handle one at a time. The only way she can move a handle is by walking into a room.
 
 ###### Some initial ideas after reading the problem
-    - One problem I had with this question is that I kept thinking in terms of finding the most optimal path to synchronize the clocks starting from each node on the tree, but this isn't necessary. You simply need to see if each node is "solvable" -- that is, does there exist a path from a node such that Bessie can synchronize all clocks?
-    - I thought of a really simple test case, which just invovles a room with the clock at 12 and a room with a clock at 11. Thinking about it, the only node that's "solvable" is the room set to 12. This gave me one important piece of information: Bessie doesn't have to end on the node she started on.
+  - One problem I had with this question is that I kept thinking in terms of finding the most optimal path to synchronize the clocks starting from each node on the tree, but this isn't necessary. You simply need to see if each node is "solvable" -- that is, does there exist a path from a node such that Bessie can synchronize all clocks?
+  - I thought of a really simple test case, which just invovles a room with the clock at 12 and a room with a clock at 11. Thinking about it, the only node that's "solvable" is the room set to 12. This gave me one important piece of information: Bessie doesn't have to end on the node she started on.
 
 ###### Sample test case
 
