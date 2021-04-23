@@ -18,6 +18,7 @@
       - He wants the sum of the areas of all possible triangles.
   - Learning from my mistakes in the Clock Tree problem, I looked at the maximum size of N. N is at most 10^5, and usually when I see a number like that on USACO, it suggests that some N * log(N) solution is involved. The first thing I thought of when I saw that is merge sort, but before I thought too deeply, I thought of how I would be able to compute the areas of all these triangles quickly. 
   - The apparently problem wants us to compute the area of squares instead of triangles because it guarantes integers.  
+      - This is one of those USACO problems that has to deal with an overflow problem because values will become extremely big when finding the solution.  
 
 ###### Some ideas after reading the problem
 The first thing I thought of was to align all the points based on a point of focus -- that is, I find all the points with either the same x coordinate or same y coordinate as the point of focus as shown below.  
@@ -76,10 +77,11 @@ These are what each variable represents:
 The formula for computing the distances from the next point of focus is therefore T(next) = T(current) - (M - G - 1) * L + (G - 1) * L.  
 To explain this formula, (M - G - 1) * L represents the number of lines we end up trimming while (G - 1) * L represents the numbner of lines we add back. We subtract the former from T(current) and add the latter to T(current) to get T(next). Thus, we have our O(N) solution to this subproblem.  
 
-There's one last thing we need to consider for this dynamic programming solution, however. How do we enable this dynamic programming solution to work in the first place? In the example I showed, we need to make sure all the points are on the same Y level, but at the same time, we also need to sort by the X coordinates in increasing order. Since we're on Java, the way I dealt with this is to make a class that extends Point but also implements Comparable. I will then Override the compareTo function to implement how Arrays.sort() will sort these points. One thing to note is that I need to compute these distances in both the X and Y direction, so I have a static variable that toggles how the compareTo function should sort. On one hand, when computing distances in the Y direction, I should be sorting by X and then sorting by Y if two points have the same X value. On the other hand, when computing the distances in the X direction, I should be sorting by Y first and then sorting by X if two points have the same Y value.
+There's one last thing we need to consider for this dynamic programming solution, however. How do we enable this dynamic programming solution to work in the first place? In the example I showed, we need to make sure all the points are on the same Y level, but at the same time, we also need to sort by the X coordinates in increasing order. Since we're on Java, the way I dealt with this is to make a class that extends Point but also implements Comparable. I will then Override the compareTo function to implement how Arrays.sort() will sort these points. One thing to note is that I need to compute these distances in both the X and Y direction, so I have a static variable that toggles how the compareTo function should sort. On one hand, when computing distances in the Y direction, I should be sorting by X and then sorting by Y if two points have the same X value. On the other hand, when computing the distances in the X direction, I should be sorting by Y first and then sorting by X if two points have the same Y value.  
 
-Then, the compute the rest of the distances from the next points of focus, I
+Basically, I now have my solution, because the last part, computing all the areas is just a simple loop through all points in O(N) time to compute the "(a + b + c + d + e) * (f + g + h + i + j)" formula I mentioned earlier, although we do need to deal with the overflow problem. We do this by just modding everything by 10^9 + 7 for every operation we do.  
 
+###### Pseudocode
 There are a few things to note about my approach:
 1. Sort by Ys first
     - Make sure the compareTo function also sorts by X coordinate if we get two points with the same Y value.
