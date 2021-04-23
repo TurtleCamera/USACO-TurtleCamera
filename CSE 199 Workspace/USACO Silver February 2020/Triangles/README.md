@@ -22,9 +22,21 @@
 ###### Some ideas after reading the problem
 The first thing I thought of was to align all the points based on a point of focus -- that is, I find all the points with either the same x coordinate or same y coordinate as the point of focus as shown below.  
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_2.png)
-Total area = 
-(a + b + c + d + e) * 
-(f + g + h + i + j)
+
+Next, I imagined computing a row of triangles as shown below.  
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_3.png)
+
+After that, I imagined drawing even more triangles.  
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_4.png)
+
+After thinking about it for a few minutes, I then came to the realization that the easiest way to compute the area of all these triangles is to sum all the distances from the focus point in the x direction, and sum all the distances from the focus point in the y direction, then multiply the two values together. To visualize this, I'll label some things below.
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_6.png)
+
+From this, the total area of the triangles in the first quadrant is = (a + b + c + d + e) * (f + g + h + i + j).  
+
+###### Some issues to consider about this problem
+  - What I thought of may not necessarily be good enough -- this is too superficial -- because I need to make sure that all my operations don't exceeed O(N * log(N)) time.
+  - 
 
 This should result in a solution that makes you sort twice in O(N * log(N)) time, and you traverse the points three times in O(N) time. This should be good enough for a silver question. Here is an ![image](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle.jpg) showing some of the work that I wrote down on scratch paper to help me solve this problem.  
 There are a few things to note about my approach:
