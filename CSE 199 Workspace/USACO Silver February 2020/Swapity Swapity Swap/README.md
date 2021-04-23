@@ -29,7 +29,7 @@ This is where I noticed the first pattern. We can think of this in terms of a gr
 After completing all M steps, the last step shows where the cows will end up after those M steps, basically mapping out where the cows at each index on the graph will move to.  
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Swap_2.png)  
 To elaborate on what I mean by this, 1 5 7 6 2 3 4 is the mapping such that each value shows where the cow at that index would have moved to. For example, the cow from index 5 will move to index 2, the cow from index 4 will move to index 7, and the cow from index 6 will move to index 4. Farmer John wants us to repeat this K <= 10^9 times, so one way to repeat this procedure is to compute these M steps only once, and store this mapping. Then we can reuse it over and over again like shown below.    
-![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Swap_3.png)      
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Swap_6.png)      
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Swap_4.png)       
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Swap_5.png)   
 
