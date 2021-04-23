@@ -33,7 +33,10 @@ At this point, I realized something crucial: the only way you can get rid of a l
 Around this point, I realized another problem that I might have to deal with. What if there is an internal node that's already set to 12. While I was drawing things out, I realized that my potential DFA algorithm is probably going to make that clock go over 12 to 1; however, I remembered something near the beginning of this endeavor that would serve to be useful for resolving this potential edge case, which I will copy and paste below:  
 > One problem I had with this question is that I kept thinking in terms of finding the most optimal path to synchronize the clocks starting from each node on the tree, but this isn't necessary. You simply need to see if each node is "solvable" -- that is, does there exist a path from a node such that Bessie can synchronize all clocks?  
 This means that going over 12 is fine, as long as I manage to get rid of the leaf nodes. This is because that clock that goes over 12 will eventually become a leaf node, and I'll get rid of it anyway. Thus, I continued to my final page:  
-![Scratch Paper 4](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_4.jpg)
+![Scratch Paper 4](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_4.jpg)  
+I started to notice a pattern here. It's that if there's a node that's "solvable," then every node that's even distance from it is also solvable. It was at this moment that I realized that I made a big mistake, however, which is forgetting to check the maximum value of N in the problem: ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_11.png).
+
+I thought about this for about half an hour, and I thought of a mini proo
 
 If you do enough test cases, you may end up realizing that there's an O(N) solution that's possible for this question. I'll leave a few images here to reference to see how I figured it out, but it took a long time to figure that out, so I would still stick with an O(N^2) solution. The images are listed below:
 
