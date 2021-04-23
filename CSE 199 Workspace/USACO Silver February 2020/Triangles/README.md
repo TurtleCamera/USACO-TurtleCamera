@@ -1,6 +1,6 @@
 # Information about Triangle
 ### Summarized concepts
-  - Dynamic programming with very mild memoization.
+  - Dynamic programming with very mild memoization (if this can really be considered dynamic programming, let alone memoization).
   - Get ready for a relatively straightforward algorithm, but complicated implementation.
   - Merge sort.
     - Override compareTo.
