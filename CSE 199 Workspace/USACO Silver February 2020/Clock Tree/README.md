@@ -35,13 +35,11 @@ Around this point, I realized another problem that I might have to deal with. Wh
 
 This means that going over 12 is fine, as long as I manage to get rid of the leaf nodes. This is because that clock that goes over 12 will eventually become a leaf node, and I'll get rid of it anyway. Thus, I continued to my final page:  
 ![Scratch Paper 4](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_4.jpg)  
-I started to notice a pattern here. It's that if there's a node that's "solvable," then every node that's even distance from it is also solvable. It was at this moment that I realized that I made a big mistake, however, which is forgetting to check the maximum value of N in the problem: ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_11.png).
+I started to notice a pattern here. It's that if there's a node that's "solvable," then every node that's even distance from it is also solvable. It was at this moment that I realized that I made a big mistake, however, which is forgetting to check the maximum value of N in the problem: ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_11.png).  
+In my mind around this time, I was thinking wait, this is silver we're talking about. Knowing how USACO likes to set up their problems, surely we can get away with a O(N^2) solution, right? This was a massive facepalm moment, because I found out that I just wasted several hours trying to design an algorithm, when it probably wasn't required. 
+But I was already too deep into this question, so I went for the O(N) solution anyway. After thinking about this for about half an hour, I thought of a mini proof shown in the last page of my work.
 
-I thought about this for about half an hour, and I thought of a mini proo
-
-If you do enough test cases, you may end up realizing that there's an O(N) solution that's possible for this question. I'll leave a few images here to reference to see how I figured it out, but it took a long time to figure that out, so I would still stick with an O(N^2) solution. The images are listed below:
-
-O(N^2) is accepted here because the max value for N is just 2,500, which is pretty low; however, I'll still write down the stuff for the O(N) solution too. These are the things that came to my mind while I was attempting this question:
+###### Writing some pseudocode
 1. Build a minimum spanning tree using the information provided in the question and input
 2. Use DFS, because we want to clear all the leaf nodes first. This is because the only way to clear a leaf node is to keep going back and forth between that node and its parent.
     - Increment the clock handle position of each node you traverse by 1.
