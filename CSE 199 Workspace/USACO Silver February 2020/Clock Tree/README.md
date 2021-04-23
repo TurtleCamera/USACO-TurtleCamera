@@ -28,10 +28,10 @@ I didn't really learn anything from this, so I started making my own test cases 
 ###### My own test cases
 ![Scratch Paper 1](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_1.jpg)  
 ![Scratch Paper 2](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_2.jpg)  
-At this point, I realized something crucial: the only way you can get rid of a leaf node is by going back and forth between the leaf node and its parent. 
+At this point, I realized something crucial: the only way you can get rid of a leaf node is by going back and forth between the leaf node and its parent. Immediately, I thought of a DFS solution, because getting rid of leaf nodes first implies that there is some depth prioritization in this problem, but I felt that calling DFS starting from every node seemed too much along the lines of brute force, so I continued to draw things out on paper.  
+![Scratch Paper 3](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_3.jpg)
 
 If you do enough test cases, you may end up realizing that there's an O(N) solution that's possible for this question. I'll leave a few images here to reference to see how I figured it out, but it took a long time to figure that out, so I would still stick with an O(N^2) solution. The images are listed below:
-3. [Scratch Paper 3](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_3.jpg)
 4. [Scratch Paper 4](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_4.jpg)
 
 O(N^2) is accepted here because the max value for N is just 2,500, which is pretty low; however, I'll still write down the stuff for the O(N) solution too. These are the things that came to my mind while I was attempting this question:
