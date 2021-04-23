@@ -12,7 +12,7 @@
       - Then, he wants the cows to repeat that routine K times.  
 
 ###### Some ideas after reading the problem
-This is a really daunting question. No way can you even do O(N * K) because those values are too big. You probably can't even do O(log(N) * log(K)), although such a solution probably doesn't make sense here anyway. I had no idea where to start, so I don't have much to say here.  
+This is a really daunting question. No way can you even do O(N * K) because those values are too big. I had no idea where to start, so I don't have much to say here.  
 
 ###### Doing the sample test case
 The sample test case tells the cows between indices 2 and 5 to reverse, and then the cows between indices 3 to 7 to reverse.  
@@ -33,6 +33,10 @@ To elaborate on what I mean by this, 1 5 7 6 2 3 4 is the mapping such that each
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Swap_4.png)       
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Swap_5.png)   
 
+From what I see at this point, I couldn't really see a way to bring this down from O(N * M), which is at most 10^5 * 10^2 = 10^7, which still seems fine, but the K value of 10^9 is still a huge problem. It's usually fine to run something in 10^7 time in silver, but running something in 10^7 + 10^9 time is way too much.  
+
+###### Thinking about dealing with K
+After quite some time, I realized a pattern with the sample test case. Notice how some of the values go back to their original location after a certain number of iterations. For example, 1 never moves from its spot; thus, that cow will go back to its original location in 1 iteration of K. The cow starting from index 2 ends up going back to its original location in 2 iterations of K. This 
 
 ### Explanation
 N and K are massive, which means the time complexity limit is probably very strict; just from the numbers, it should immediately be a red flag, that you that you need a linear time solution to pass all the test cases. Honestly, I have a hard time believing this is a silver question, because when I used to do USACO back in high school, I never got questions nearly as hard as this one. Basically, to solve this question, you need to compress the problem into smaller subproblems extremely hard, except that you don't actually use memoization. This is pretty much what happened in my mind while I was pondering and implementing the question and solution respectively:
