@@ -20,7 +20,12 @@
   - The apparently problem wants us to compute the area of squares instead of triangles because it guarantes integers.  
 
 ###### Some ideas after reading the problem
-  - 
+The first thing I thought of was to align all the points based on a point of focus -- that is, I find all the points with either the same x coordinate or same y coordinate as the point of focus as shown below.  
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_2.png)
+Total area = 
+(a + b + c + d + e) * 
+(f + g + h + i + j)
+
 This should result in a solution that makes you sort twice in O(N * log(N)) time, and you traverse the points three times in O(N) time. This should be good enough for a silver question. Here is an ![image](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle.jpg) showing some of the work that I wrote down on scratch paper to help me solve this problem.  
 There are a few things to note about my approach:
 1. Sort by Ys first
