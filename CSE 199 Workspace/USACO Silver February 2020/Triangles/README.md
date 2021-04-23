@@ -12,7 +12,15 @@
     - Apparently even an int is not large enough because it causes the solution to overflow. Unless the competitor's int value is 64 bits, then use a long to store the value instead.
 
 ### Explanation
-This should result in a solution that makes you sort twice in O(N * log(N)) time, and you traverse the points three times in O(N) time. This should be good enough for a silver question. Here is an [image](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle.jpg) showing some of the work that I wrote down on scratch paper to help me solve this problem.  
+###### What I learned from the problem
+  - There are a ton of points on the field such that Farmer John can put a fence post. None of the points are duplicates.
+  - Farmer John wants wants to make a bunch of right triangles out of these points, but the catch is that he wants two of the sides of these right triangles to be aligned with the x and y axis of the field.  
+      - He wants the sum of the areas of all possible triangles.
+  - Learning from my mistakes in the Clock Tree problem, I looked at the maximum size of N. N is at most 10^5, and usually when I see a number like that on USACO, it suggests that some N * log(N) solution is involved. The first thing I thought of when I saw that is merge sort, but before I thought too deeply, I thought of how I would be able to compute the areas of all these triangles quickly. 
+
+###### Some ideas after reading the problem
+  - 
+This should result in a solution that makes you sort twice in O(N * log(N)) time, and you traverse the points three times in O(N) time. This should be good enough for a silver question. Here is an ![image](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle.jpg) showing some of the work that I wrote down on scratch paper to help me solve this problem.  
 There are a few things to note about my approach:
 1. Sort by Ys first
     - Make sure the compareTo function also sorts by X coordinate if we get two points with the same Y value.
