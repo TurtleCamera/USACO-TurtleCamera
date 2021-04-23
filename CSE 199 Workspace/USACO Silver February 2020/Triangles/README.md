@@ -36,7 +36,20 @@ From this, the total area of the triangles in the first quadrant is = (a + b + c
 
 ###### Some issues to consider about this problem
   - What I thought of may not necessarily be good enough -- this is too superficial -- because I need to make sure that all my operations don't exceeed O(N * log(N)) time.
-  - 
+  - The first thing I have to deal with is to figure out how to align all the points together in the way I imagined in the first place. The only thing I could think of is to use merge sort, which is perfect because of the O(N * log(N)) restriction I thought of.
+  - As for computing the distances to each point of focus along an axis, this is where it gets really tough, so much to the point that I need a whole section for it.
+
+###### Computing the distances in no more than O(N * log(N)) time
+I was stuck on this for a while, so I decided to start off with a brute force idea to approaching this. Imagine a line of dots as shown in the screenshot below.
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_7.png)  
+I first thought of computing the distances between every pair of points.
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_8.png)
+Obviously, this is an O(N^2) solution, but this at least got me thinking about the problem a little more deeply. I was stuck on this for about an hours, but I'll try to list a few things I kept in mind when trying to figure this out:  
+  - The possible run times for solving this subproblem are O(log(N)), O(N), and O(N * log(N)). Out of these 3, the only one that really makes sense is the O(N) solution. This is because common algorithms you see on USACO are some variant of binary search and merge sort, neither which would really be helpful in this case, but I should still keep these log run times in mind. Overall, I was mainly focused on figuring out an O(N) solution, since it felt like it made the most sense.  
+  - -
+  
+  
+About an hour passed, and that's when it hit me.
 
 This should result in a solution that makes you sort twice in O(N * log(N)) time, and you traverse the points three times in O(N) time. This should be good enough for a silver question. Here is an ![image](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle.jpg) showing some of the work that I wrote down on scratch paper to help me solve this problem.  
 There are a few things to note about my approach:
