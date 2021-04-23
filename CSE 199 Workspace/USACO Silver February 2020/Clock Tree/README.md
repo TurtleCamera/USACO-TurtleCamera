@@ -16,7 +16,7 @@
   - I thought of a really simple test case, which just invovles a room with the clock at 12 and a room with a clock at 11. Thinking about it, the only node that's "solvable" is the room set to 12. This gave me one important piece of information: Bessie doesn't have to end on the node she started on.
 
 ###### Sample test case
-Below shows how I solved the sample test case:
+Below shows how I solved the sample test case:  
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_5.png)
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_6.png)
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_7.png)
