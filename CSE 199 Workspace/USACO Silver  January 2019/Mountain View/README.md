@@ -2,10 +2,18 @@
 ### Summarized concepts
   - N is large, so the algorithm should be at least as good as O(N * log(N))
   - Visualize the problem in a different way: don't think of it as peaks. Convert the problem to an interval problem
-      - Famous interval scheduling problem (greedy version)
+      - Famous interval scheduling problem (greedy version).  
       - Sort by start times, but choose the left-most end time, such that the interval isn't covered by any of the other intervals.
   - Merge sort.
-      - compareTo function.
+      - compareTo function.  
+
+###### What I learned from the problem
+  - Bessie is going sightseeing, and she sees N peaks of mountains represented as N points on a plane.  
+      - These mountains are shaped as 45-45-90 isosceles triangles.  
+  - She can only see a mountain if the peak's point is not "obscured" by another point -- that is, the peak not "under another mountain's shape." In other words, the peak of a point shouldn't be inside another isosceles triangle.
+
+###### Some ideas that I got from the problem
+I initially went the wrong direction. I forgot to look at the maximum value of N, and thought that perhaps making a ton of y = m*x + b lines would do the trick
 
 ### Explanation
 We know from the problem that if a point can't be seen, then its triangle mountain is fully under another triangle mountain's boundary. This also implies that base of that mountain is also within the base of the mountain with the peak on top. This means we can translate this problem into an interval scheduling problem, such that the intervals of each point are (x - y, x + y). We can then use a greedy algorithm to solve this problem. Here are the screenshots that led me to figuring this out: [page 1](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Mountain_View_1.jpg) and [page 2](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Mountain_View_2.jpg). Below is an outline of my thought process:  
