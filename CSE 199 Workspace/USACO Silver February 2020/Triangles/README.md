@@ -43,15 +43,43 @@ From this, the total area of the triangles in the first quadrant is = (a + b + c
 I was stuck on this for a while, so I decided to start off with a brute force idea to approaching this. Imagine a line of dots as shown in the screenshot below.  
 ![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_7.png)  
 I first thought of computing the distances between every pair of points.  
-![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_8.png)
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_8.png)  
 Obviously, this is an O(N^2) solution, but this at least got me thinking about the problem a little more deeply. I was stuck on this for about an hours, but I'll try to list a few things I kept in mind when trying to figure this out:    
   - The possible run times for solving this subproblem are O(log(N)), O(N), and O(N * log(N)). Out of these 3, the only one that really makes sense is the O(N) solution. This is because common algorithms you see on USACO are some variant of binary search and merge sort, neither which would really be helpful in this case, but I should still keep these log run times in mind. Overall, I was mainly focused on figuring out an O(N) solution, since it felt like it made the most sense.  
-  - -
-  
-  
-About an hour passed, and that's when it hit me.
+    - Given that the solution is probably O(N), it tells me that the only real way to really compute these by just traversing each points is to use information from one point of focus to compute information for other points of focus.
+    - Eventually, this led me to think that perhaps a minimal dynamic programming solution -- if this can really be considered dynamic programming -- is probably required, although to think of a solution for this is where it became really hard.  
 
-This should result in a solution that makes you sort twice in O(N * log(N)) time, and you traverse the points three times in O(N) time. This should be good enough for a silver question. Here is an ![image](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle.jpg) showing some of the work that I wrote down on scratch paper to help me solve this problem.  
+###### Executing the dynamic programming solution
+About an hour passed, and that's when it hit me. We can visualize the distances as lines instead of curves in my images above. I have some drawings on paper shown below.
+![image](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle.jpg)  
+But it's a bit messy, so I'll redraw my idea on Microsoft paint.  
+We can visualize the distances as adjacent lines sorted in increasing length from top to bottom.  
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_9.png)  
+To compute the distances from the next point of focus, we need to cut some of these lines.
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_10.png)   
+Then for the next point of focus, we do the same, but we have to add some of the trimmed lines back (in orange).
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_11.png)  
+Then again.  
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_12.png)  
+And again.
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_13.png)  
+And finally, we reach the last point of focus on the same y level.
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_14.png)  
+We're now getting really close to the solution. All we need to solve this subproblem is the formula needed to make this work. In the algorithm, I probably need to go through all the points once just to get the initial distances from the first point of focus. Before I can explain the dynamic programming part, I need to label a few things below.  
+![Sample](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Triangle_15.png)  
+These are what each variable represents:  
+  - L: length of the part we trimmed.
+  - N: number of points (not used in the formula).
+  - M: number of gaps between points.  
+  - T: not shown on the screenshot, but this is the sum of all distances from a point of focus.  
+  - G: not shown on the screenshot, but this is the number of gaps we've already traversed.
+The formula for computing the distances from the next point of focus is therefore T(next) = T(current) - (M - G - 1) * L + (G - 1) * L.  
+To explain this formula, (M - G - 1) * L represents the number of lines we end up trimming while (G - 1) * L represents the numbner of lines we add back. We subtract the former from T(current) and add the latter to T(current) to get T(next). Thus, we have our O(N) solution to this subproblem.  
+
+There's one last thing we need to consider for this dynamic programming solution, however. How do we enable this dynamic programming solution to work in the first place? In the example I showed, we need to make sure all the points are on the same Y level, but at the same time, we also need to sort by the X coordinates in increasing order. Since we're on Java, the way I dealt with this is to make a class that extends Point but also implements Comparable. I will then Override the compareTo function to implement how Arrays.sort() will sort these points. One thing to note is that I need to compute these distances in both the X and Y direction, so I have a static variable that toggles how the compareTo function should sort. On one hand, when computing distances in the Y direction, I should be sorting by X and then sorting by Y if two points have the same X value. On the other hand, when computing the distances in the X direction, I should be sorting by Y first and then sorting by X if two points have the same Y value.
+
+Then, the compute the rest of the distances from the next points of focus, I
+
 There are a few things to note about my approach:
 1. Sort by Ys first
     - Make sure the compareTo function also sorts by X coordinate if we get two points with the same Y value.
