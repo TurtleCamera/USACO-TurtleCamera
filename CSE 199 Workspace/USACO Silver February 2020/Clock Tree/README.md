@@ -6,8 +6,19 @@
   - DFS or BFS (DFS recommended)
 
 ### Explanation
+###### What I learned from the problem
+    - There are N rooms that are connected with N - 1 corridors. This basically screams minimum spanning tree.  
+    - Each room has a clock such that the handle points to one of the 12 hours.
+    - Bessie wants to change all the clocks to point to 12, but she can only do so by moving each clock handle one at a time. The only way she can move a handle is by walking into a room.
+
+###### Some initial ideas after reading the problem
+    - One problem I had with this question is that I kept thinking in terms of finding the most optimal path to synchronize the clocks starting from each node on the tree, but this isn't necessary. You simply need to see if each node is "solvable" -- that is, does there exist a path from a node such that Bessie can synchronize all clocks?
+    - I thought of a really simple test case, which just invovles a room with the clock at 12 and a room with a clock at 11. Thinking about it, the only node that's "solvable" is the room set to 12. This gave me one important piece of information: Bessie doesn't have to end on the node she started on.
+
+###### Sample test case
+
 If you do enough test cases, you may end up realizing that there's an O(N) solution that's possible for this question. I'll leave a few images here to reference to see how I figured it out, but it took a long time to figure that out, so I would still stick with an O(N^2) solution. The images are listed below:
-1. [Scratch Paper 1](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_1.jpg)
+1. ![Scratch Paper 1](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_1.jpg)
 2. [Scratch Paper 2](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_2.jpg)
 3. [Scratch Paper 3](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_3.jpg)
 4. [Scratch Paper 4](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Clock_Tree_4.jpg)
