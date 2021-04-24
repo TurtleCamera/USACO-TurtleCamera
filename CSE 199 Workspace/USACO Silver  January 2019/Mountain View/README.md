@@ -29,10 +29,10 @@ Notice that the starting points are guaranteed to be on the right side of my sel
 
 ###### Edge cases  
 Once I got that figured out, I then realized a problem of matching starting points and matching ending points. I first dealt with the matching ending points. This case really isn't that much different from the case that I illustrated in the image above.  
-[page 2](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Mountain_View_4.png)  
+![page 2](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Mountain_View_4.png)  
 The ending points are still not past the red dotted line, so the ascending order of starting points will force the mountain to be obscured.  
 The important part, however, is dealing with the matching starting points. This is where caution must be exercised, because you do need to select a specific interval to make sure it's not obscured. Looking at my scratch paper below, I quickly determined that if we are to have matching starting points, I should select the interval with the furthest ending point, because all other intervals with matching starting points will be obscured due to having ending points on the left side of my selected ending point.  
-[page 2](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Mountain_View_2.jpg)  
+![page 2](https://github.com/TurtleCamera/USACO-TurtleCamera/blob/main/CSE%20199%20Workspace/images/Mountain_View_2.jpg)  
 
 ###### Sorting
 Now that I have that sorted out, I need to figure out how to make this work in the first place. It's pretty clear that some merge sort is going to be involved. After all, we deterimined from the maximum N value of 10^5 that the solution is probably O(N * log(N)) anyway. The part we need to be careful is the edge case. Since we're on Java, we can make use of the compareTo function in the Comparable interface. We first prioritize sorting by starting points in ascending order. Once we get matching starting points, however, we should sort by ending points in __DECREASING__ order (make sure it's decreasing, because I got stuck on one wrong problem for 5 minutes).  
